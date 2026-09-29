@@ -17,7 +17,6 @@
         body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
             background: #000;
         }
 
@@ -25,21 +24,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         .hero {
-    width: 100vw;
-    height: 100vh;
-    background-image: url("ChatGPT%20Image%2029%20sept%202026,%2017_19_05.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #000;
-}
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
     </style>
 </head>
 
 <body>
-    <main class="hero"></main>
+
+    <main class="hero">
+        <img src="ChatGPT%20Image%2029%20sept%202026,%2017_19_05.png"
+             alt="GONES360 - Haz que te vean">
+    </main>
+
 </body>
-      </html>
+</html>
