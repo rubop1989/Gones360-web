@@ -1,56 +1,998 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GONES360 - Haz que te vean">
-    <title>GONES360 | Próximamente</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta name="description" content="GONES360 — Marketing digital, tecnología e inteligencia artificial para empresas. Haz que te vean.">
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            background: #000;
-        }
+  <title>GONES360 | Haz que te vean</title>
 
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+  <style>
+    :root {
+      --bg: #050507;
+      --bg-soft: #0b0b10;
+      --text: #f7f7fb;
+      --muted: #a9a9b7;
+      --purple: #a83cff;
+      --purple-2: #6f19d8;
+      --line: rgba(168, 60, 255, .20);
+      --card: rgba(255,255,255,.045);
+      --max: 1180px;
+    }
 
-        .hero {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-        }
-    </style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(137, 30, 255, .10), transparent 28%),
+        radial-gradient(circle at 85% 35%, rgba(100, 20, 190, .08), transparent 30%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       LOGO SUPERIOR + MENÚ
+       ========================= */
+
+    .nav-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 12px 0 16px;
+      background: linear-gradient(
+        to bottom,
+        rgba(5,5,7,.96),
+        rgba(5,5,7,.72),
+        transparent
+      );
+      backdrop-filter: blur(8px);
+    }
+
+    .top-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2px 0 10px;
+    }
+
+    .top-logo a {
+      display: block;
+      width: min(190px, 42vw);
+    }
+
+    .top-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    nav {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: rgba(8,8,12,.72);
+      box-shadow: 0 12px 40px rgba(0,0,0,.24);
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: 1.15rem;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d8d8e1;
+      font-size: .88rem;
+      transition: color .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--purple-2)
+      );
+      color: white !important;
+      font-weight: 800;
+      box-shadow: 0 0 24px rgba(168,60,255,.25);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* =========================
+       PORTADA
+       ========================= */
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 180px 0 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: #d8b4ff;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--purple);
+      box-shadow: 0 0 12px var(--purple);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.8rem);
+      line-height: .88;
+      letter-spacing: -.075em;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    h1 span {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.55);
+    }
+
+    .hero-copy {
+      margin: 28px auto 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .actions {
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 800;
+      font-size: .9rem;
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168,60,255,.55);
+    }
+
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--purple-2)
+      );
+      border-color: transparent;
+      box-shadow: 0 0 30px rgba(168,60,255,.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.035);
+    }
+
+    /* =========================
+       GENERAL
+       ========================= */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-kicker {
+      color: #c98cff;
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      max-width: 850px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 780px;
+      margin-top: 22px;
+      font-size: 1.08rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    .accent {
+      color: white;
+      font-weight: 800;
+    }
+
+    .quote {
+      border-left: 2px solid var(--purple);
+      padding-left: 24px;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    /* =========================
+       QUÉ HACEMOS
+       ========================= */
+
+    .approach {
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.018),
+        rgba(255,255,255,.005)
+      );
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 55px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .step {
+      padding: 30px 25px;
+      min-height: 170px;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    .step:last-child {
+      border-right: 0;
+    }
+
+    .step-number {
+      color: var(--purple);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+    }
+
+    .step h3 {
+      margin-top: 22px;
+      font-size: 1.15rem;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 8px;
+    }
+
+    /* =========================
+       SERVICIOS
+       ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 50px;
+    }
+
+    .service {
+      position: relative;
+      padding: 30px;
+      min-height: 245px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      background: var(--card);
+      overflow: hidden;
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168,60,255,.35);
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: rgba(168,60,255,.10);
+      filter: blur(8px);
+    }
+
+    .service:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .service-number {
+      color: var(--purple);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .service h3 {
+      margin-top: 25px;
+      font-size: 1.45rem;
+      letter-spacing: -.025em;
+    }
+
+    .service p {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 650px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: .73rem;
+      color: #dcdce5;
+      border: 1px solid rgba(255,255,255,.09);
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.025);
+    }
+
+    /* =========================
+       IA
+       ========================= */
+
+    .ai-box {
+      margin-top: 50px;
+      padding: 45px;
+      border-radius: 28px;
+      border: 1px solid rgba(168,60,255,.24);
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(168,60,255,.13),
+          transparent 32%
+        ),
+        rgba(255,255,255,.025);
+    }
+
+    .ai-box h3 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -.045em;
+      max-width: 760px;
+    }
+
+    .ai-box p {
+      color: var(--muted);
+      max-width: 780px;
+      margin-top: 15px;
+    }
+
+    /* =========================
+       CONTACTO
+       ========================= */
+
+    .contact {
+      padding-bottom: 70px;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 60px;
+      padding: 55px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(168,60,255,.10),
+          rgba(255,255,255,.025)
+        );
+    }
+
+    .contact-box h2 {
+      max-width: 600px;
+    }
+
+    .contact-copy {
+      color: var(--muted);
+      margin-top: 20px;
+      max-width: 570px;
+    }
+
+    .contact-details {
+      align-self: center;
+      padding: 25px;
+      border-left: 1px solid rgba(168,60,255,.35);
+    }
+
+    .contact-details small {
+      display: block;
+      color: var(--muted);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .contact-details a {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      padding: 30px 0 45px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: #777785;
+      font-size: .8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* =========================
+       MÓVIL
+       ========================= */
+
+    @media (max-width: 900px) {
+
+      .two-col,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 190px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .step:nth-child(2) {
+        border-right: 0;
+      }
+
+      .step:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .contact-details {
+        border-left: 0;
+        border-top: 1px solid rgba(168,60,255,.35);
+        padding-left: 0;
+        padding-top: 25px;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .container,
+      nav {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .top-logo a {
+        width: min(175px, 46vw);
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 74px;
+        left: 14px;
+        right: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 16px;
+        background: rgba(8,8,12,.96);
+        backdrop-filter: blur(15px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 13px 12px;
+      }
+
+      .nav-links .nav-cta {
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .steps,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step,
+      .step:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .step:last-child {
+        border-bottom: 0;
+      }
+
+      .service:last-child {
+        grid-column: auto;
+      }
+
+      .ai-box,
+      .contact-box {
+        padding: 30px 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <main class="hero">
-        <img src="ChatGPT%20Image%2029%20sept%202026,%2017_19_05.png"
-             alt="GONES360 - Haz que te vean">
-    </main>
+  <!-- =========================
+       LOGO + MENÚ
+       ========================= -->
 
-</body>
-</html>
+  <header class="nav-wrap">
+
+    <div class="top-logo">
+      <a href="#inicio" aria-label="GONES360 - Inicio">
+        <img
+          src="GONES360_logo_original.png"
+          alt="GONES360 — Haz que te vean"
+        >
+      </a>
+    </div>
+
+    <nav>
+
+      <a class="brand" href="#inicio">
+        GONES<span>360</span>
+      </a>
+
+      <button
+        class="menu-btn"
+        aria-label="Abrir menú"
+        onclick="toggleMenu()">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li>
+          <a href="#quienes-somos" onclick="closeMenu()">
+            Quiénes somos
+          </a>
+        </li>
+
+        <li>
+          <a href="#que-hacemos" onclick="closeMenu()">
+            Qué hacemos
+          </a>
+        </li>
+
+        <li>
+          <a href="#servicios" onclick="closeMenu()">
+            Servicios
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#contacto"
+            class="nav-cta"
+            onclick="closeMenu()">
+            Hablemos
+          </a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         PORTADA
+         ========================= -->
+
+    <section class="hero" id="inicio">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            Marketing · Tecnología · IA
+          </div>
+
+          <h1>
+            HAZ QUE
+            <span>TE VEAN.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Ayudamos a empresas a ganar visibilidad,
+            conectar con sus clientes y convertir la
+            tecnología en una herramienta real de crecimiento.
+          </p>
+
+          <div class="actions">
+
+            <a
+              class="btn btn-primary"
+              href="#servicios">
+              Descubre nuestros servicios
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="#contacto">
+              Hablemos
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUIÉNES SOMOS
+         ========================= -->
+
+    <section id="quienes-somos">
+
+      <div class="container two-col">
+
+        <div>
+
+          <div class="section-kicker">
+            Quiénes somos
+          </div>
+
+          <h2>
+            Visibilidad con estrategia.
+            Tecnología con sentido.
+          </h2>
+
+        </div>
+
+        <div class="text">
+
+          <p>
+            <span class="accent">
+              GONES360 nace dentro del ecosistema de Conficial Solutions
+            </span>,
+            llevando su visión tecnológica al terreno de la
+            presencia digital, la captación y el crecimiento empresarial.
+          </p>
+
+          <p>
+            Creemos que una empresa no necesita estar en todas partes.
+            Necesita estar
+            <span class="accent">
+              donde están sus clientes
+            </span>,
+            comunicar bien lo que hace y utilizar las herramientas
+            adecuadas para crecer.
+          </p>
+
+          <p>
+            Por eso combinamos estrategia, diseño, marketing digital,
+            datos, automatización e inteligencia artificial para
+            construir soluciones adaptadas a cada negocio.
+          </p>
+
+          <div class="quote">
+            No se trata solo de estar en Internet.
+            <br>
+            <strong>Se trata de ser visible.</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUÉ HACEMOS
+         ========================= -->
+
+    <section class="approach" id="que-hacemos">
+
+      <div class="container">
+
+        <div class="section-kicker">
+          Qué hacemos
+        </div>
+
+        <h2>
+          Conectamos tu negocio con las personas
+          que lo están buscando.
+        </h2>
+
+        <p class="lead">
+          Desde tu presencia digital hasta la captación
+          y la automatización, trabajamos para que cada
+          pieza tenga un propósito y forme parte de una
+          estrategia coherente.
+        </p>
+
+        <div class="steps">
+
+          <article class="step">
+
+            <div class="step-number">
+              01 · VISIBILIDAD
+            </div>
+
+            <h3>
+              Que te encuentren
+            </h3>
+
+            <p>
+              Construimos una presencia digital clara,
+              profesional y preparada para ser encontrada.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              02 · ESTRATEGIA
+            </div>
+
+            <h3>
+              Que te entiendan
+            </h3>
+
+            <p>
+              Convertimos tus objetivos y tu propuesta
+              de valor en acciones concretas.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              03 · CAPTACIÓN
+            </div>
+
+            <h3>
+              Que contacten
+            </h3>
+
+            <p>
+              Utilizamos canales y campañas pensados
+              para generar oportunidades reales.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              04 · CRECIMIENTO
+            </div>
+
+            <h3>
+              Que avances
+            </h3>
+
+            <p>
+              Medimos, optimizamos y buscamos nuevas
+              formas de mejorar el rendimiento.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICIOS
+         ========================= -->
+
+    <section id="servicios">
+
+      <div class="container">
+
+        <div class="section-kicker">
+          Nuestros servicios
+        </div>
+
+        <h2>
+          Todo lo que necesitas para hacer crecer
+          tu presencia digital.
+        </h2>
+
+        <p class="lead">
+          Empezamos por entender tu negocio y después
+          construimos las piezas que realmente necesitas.
+          Sin soluciones copiadas.
+        </p>
+
+
+        <div class="services-grid">
+
+
+          <article class="service">
+
+            <div class="service-number">
+              01 / WEB
+            </div>
+
+            <h3>
+              Diseño web
+            </h3>
+
+            <p>
+              Webs modernas, rápidas y adaptadas a móvil
+              que representan tu marca y convierten visitas
+              en oportunidades.
+            </p>
+
+            <div class="service-tags">
+              <span class="tag">Diseño</sp
